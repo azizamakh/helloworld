@@ -1,0 +1,22 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Vérifier le code
+      uses: actions/checkout@v3
+
+    - name: Installer Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Exécuter le script Python
+      run: python hello.py
