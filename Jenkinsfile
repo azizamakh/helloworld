@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation du code...'
-                bat 'groovyc HelloWorld.groovy'
+                bat ' HelloWorld.groovy'
             }
         }
 
