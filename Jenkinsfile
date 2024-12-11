@@ -9,7 +9,7 @@ pipeline {
             }
         }
 
-        stage('Construire l'image Docker') {
+        stage('Construire limage Docker') {
             steps {
                 // Construire une image Docker
                 sh 'docker build -t python-app .'
