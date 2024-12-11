@@ -2,17 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Cloner le dépôt') {
             steps {
-                echo 'Compilation du code...'
-                bat ' groovyc HelloWorld.groovy'
+                // Cloner le dépôt Git
+                git url: 'https://github.com/azizamakh/helloworld.git', branch: 'dev'
             }
         }
 
-        stage('Run') {
+        stage('Construire l'image Docker') {
             steps {
-                echo 'Exécution du script Groovy...'
-                bat 'groovyc HelloWorld.groovy'
+                // Construire une image Docker
+                sh 'docker build -t python-app .'
+            }
+        }
+
+        stage('Exécuter le conteneur') {
+            steps {
+                // Lancer le conteneur Docker
+                sh 'docker run --rm python-app'
             }
         }
     }
