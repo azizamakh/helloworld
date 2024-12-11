@@ -5,14 +5,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compilation du code...'
-                sh 'groovyc HelloWorld.groovy'
+                bat 'groovyc HelloWorld.groovy'
             }
         }
 
         stage('Run') {
             steps {
                 echo 'Exécution du script Groovy...'
-                sh 'groovy HelloWorld.groovy'
+                bat 'groovy HelloWorld.groovy'
             }
         }
     }
