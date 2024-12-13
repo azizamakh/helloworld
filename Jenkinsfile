@@ -9,18 +9,19 @@ pipeline {
             }
         }
 
-        stage('Construire limage Docker') {
+        stage('Construire l\'image Docker') {
             steps {
-                // Construire une image Docker
-                sh 'docker build -t python-app .'
+                // Construire une image Docker en forçant l'utilisation de Bash
+                sh 'bash -c "docker build -t python-app ."'
             }
         }
 
         stage('Exécuter le conteneur') {
             steps {
-                // Lancer le conteneur Docker
-                sh 'docker run --rm python-app'
+                // Lancer le conteneur Docker en forçant l'utilisation de Bash
+                sh 'bash -c "docker run --rm python-app"'
             }
         }
     }
 }
+
